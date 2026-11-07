@@ -58,10 +58,12 @@ El escenario inicial esperado contiene:
 
 | Dato | Cantidad |
 |---|---:|
-| Inventarios | 9 |
-| Recomendaciones `PENDIENTE` | 4 |
-| Transferencias | 0 |
-| Movimientos | 0 |
+| Categorías | 5 |
+| Productos | 8 |
+| Inventarios | 23 (6 Déficit, 7 Sobrestock, 10 Normal) |
+| Recomendaciones | 7 (4 `PENDIENTE`, 2 `APROBADA`, 1 `RECHAZADA`) + 2 oportunidades listas para generar en vivo |
+| Transferencias | 2 (1 `EN_TRANSITO`, 1 `COMPLETADA`) |
+| Movimientos | 2 (1 `SALIDA`, 1 `ENTRADA`) |
 
 > Los scripts `06` a `08` modifican datos para demostrar `ROLLBACK` y `COMMIT`. No deben ejecutarse para preparar el escenario inicial.
 
@@ -104,6 +106,21 @@ setx STOCKFLOW_DB_PASSWORD "tu_contrasena"
 Después de usar `setx`, cerrar y abrir la terminal. No subir credenciales reales al proyecto.
 
 ## 5. Compilar y ejecutar
+
+Existen dos alternativas para ejecutar StockFlow:
+
+### Alternativa A: Ejecución directa con restauración automática de pruebas (Recomendada)
+
+Hacer doble clic en el archivo `ejecutar_stockflow.bat` (o ejecutarlo desde la terminal). Este lanzador:
+1. Configura automáticamente las variables de conexión a la base de datos MySQL local (`stockflow_app` / `clave_local`).
+2. Restaura automáticamente `stockflow_db` a su escenario inicial (`01_create_database.sql`, `02_create_tables.sql` y `03_seed_data.sql`), permitiendo probar aprobaciones, transferencias y cancelaciones tantas veces como sea necesario con la garantía de reiniciar siempre en el estado inicial de demostración.
+3. Compila e inicia la interfaz gráfica mediante `mvnw.cmd javafx:run`.
+
+```bat
+ejecutar_stockflow.bat
+```
+
+### Alternativa B: Ejecución manual mediante Maven
 
 Abrir CMD o PowerShell en la carpeta raíz del proyecto.
 

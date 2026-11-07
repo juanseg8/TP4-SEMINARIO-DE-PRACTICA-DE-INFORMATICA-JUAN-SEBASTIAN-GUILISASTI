@@ -326,9 +326,9 @@
     -fx-background-radius: 9;
     -fx-border-color: #eef2f7;
     -fx-border-radius: 9;
-    -fx-padding: 13 15;
-    -fx-min-height: 130;
-    -fx-pref-height: 130;
+    -fx-padding: 12 15;
+    -fx-min-height: 155;
+    -fx-pref-height: 155;
 }
 
 .detail-eyebrow {
